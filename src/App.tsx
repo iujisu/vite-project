@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 function App() {
@@ -12,6 +12,27 @@ function App() {
 
   const onChangeName =(event:React.ChangeEvent<HTMLInputElement>) => setName(event.target.value);
   const onChangeNickname=(event:React.ChangeEvent<HTMLInputElement>) => setNickname(event.target.value);
+
+  useEffect(() => {
+    console.log("컴포넌트가 랜터링 될 떼마다 특정 작업을 수행합니다.");
+    console.log("name:",name);
+    console.log("nickname:",nickname);
+  });
+
+  useEffect(() => {
+      console.log("name이라는 상태 값이 변할 경우에만 수행합니다.");
+      console.log("updated name: ", { name });
+  }, [name]);
+
+  useEffect(() => {
+        console.log("뒷 정리하기");
+        console.log("updated name: ", { name });
+
+        return () => {
+            console.log("cleanup");
+            console.log(name); // ""
+        };
+    }, [name]);
 
   return (
     <div>
