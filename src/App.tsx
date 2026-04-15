@@ -1,7 +1,27 @@
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+
+function Timer() {
+  const [count ,setCount]=useState<number>(0);
+  useEffect(() => {
+      const id= setInterval(() => {
+        console.log("time Interval 실행됨");
+        setCount((c) => c+1);
+      },1000)
+
+      return () => {
+          console.log("time cleanup: 이전 타이머 제거됨");
+          console.log(id); // ""
+      };
+  }, []);
+  
+  return <div> 카운트 : {count}</div>
+}
+
+
 function App() {
+  const [visible, setVisible] =useState<boolean>(true);
 
   const [value,setValue] = useState<number>(0);
   const [name,setName] = useState<string>("");
@@ -36,6 +56,10 @@ function App() {
 
   return (
     <div>
+      <div>
+        {visible && <Timer/>}
+        <Button onClick={() => setVisible(!visible)}>{visible ? "숨기기" : "보이기"}</Button>
+      </div>
       <p>
         현재 카운터 값은:<b>{value}</b>
       </p>
