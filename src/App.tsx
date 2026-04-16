@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState} from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -19,8 +19,27 @@ function Timer() {
   return <div> 카운트 : {count}</div>
 }
 
+const getAverage=(numbers:number[]) => {
+  console.log("평균 값을 계산중");
+  if(numbers.length === 0){
+    return 0;
+  }
+  const sum = numbers.reduce((acc, cur) => acc + cur, 0);
+  return sum / numbers.length;
+}
 
 function App() {
+  const [list,setList]=useState<number[]>([]);
+  const [number,setNumber] =  useState<string>("");
+
+  const onInsert =() => {
+    const newList = list.concat(parseInt(number));
+    setList(newList);
+    setNumber("");
+  }
+
+  const aberage = useMemo(() => getAverage(list),[list]);
+
   const [visible, setVisible] =useState<boolean>(true);
 
   const [value,setValue] = useState<number>(0);
@@ -56,6 +75,21 @@ function App() {
 
   return (
     <div>
+      <div>
+        <Input type="text" value={number} onChange={(event) =>setNumber(event.target.value)} />
+        <Button onClick={onInsert}>등록</Button>
+        <ul>
+          {list.map((item:number,index:number) => {
+              return <li key={index}>{item}</li>;
+          })}
+        </ul>
+           <div>
+            <b>평균 갑 :{getAverage(list)}</b>
+           </div>
+           <div>
+            <b>평균 갑 useMemo :{aberage}</b>
+           </div>
+      </div>
       <div>
         {visible && <Timer/>}
         <Button onClick={() => setVisible(!visible)}>{visible ? "숨기기" : "보이기"}</Button>
