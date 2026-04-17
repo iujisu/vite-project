@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState,useCallback} from "react"
+import { useEffect, useMemo, useState,useCallback, useRef} from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -79,8 +79,21 @@ function App() {
         };
     }, [name]);
 
+    const inputElement = useRef<HTMLInputElement | null>(null);
+    const handleClick =() => {
+      inputElement.current?.focus();
+      fileElement.current?.click();
+    };
+    const fileElement = useRef<HTMLInputElement | null>(null);
+    
   return (
     <div>
+      <div>
+        <Input type="text" ref={inputElement} />
+        <Input type="file" ref={fileElement} />
+        <Button onClick={handleClick}>등록</Button>
+      </div>
+
       <div>
         <Input type="text" value={number} onChange={onChange}  />
       </div>
@@ -123,7 +136,4 @@ function App() {
 }
 
 export default App
-function usrCallback(arg0: { event: any; }) {
-  throw new Error("Function not implemented.");
-}
 
