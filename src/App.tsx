@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState} from "react"
+import { useEffect, useMemo, useState,useCallback} from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -49,8 +49,14 @@ function App() {
   const increment =() => setValue(value +1);
   const decrement =() => setValue(value -1);
 
+
   const onChangeName =(event:React.ChangeEvent<HTMLInputElement>) => setName(event.target.value);
   const onChangeNickname=(event:React.ChangeEvent<HTMLInputElement>) => setNickname(event.target.value);
+
+ const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        setNumber(event.target.value);
+    }, [number]); // 컴포넌트가 처음 렌더링 될 때만 함수를 생성한다.
+ 
 
   useEffect(() => {
     console.log("컴포넌트가 랜터링 될 떼마다 특정 작업을 수행합니다.");
@@ -75,6 +81,10 @@ function App() {
 
   return (
     <div>
+      <div>
+        <Input type="text" value={number} onChange={onChange}  />
+      </div>
+
       <div>
         <Input type="text" value={number} onChange={(event) =>setNumber(event.target.value)} />
         <Button onClick={onInsert}>등록</Button>
@@ -113,3 +123,7 @@ function App() {
 }
 
 export default App
+function usrCallback(arg0: { event: any; }) {
+  throw new Error("Function not implemented.");
+}
+
