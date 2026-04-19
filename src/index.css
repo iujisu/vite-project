@@ -119,12 +119,39 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+      @apply border-border outline-ring/50;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scrollbar-width: none;
+      ::-webkit-scrollbar{
+        display: none;
+      }
     }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground text-sm leading-6;
     }
   html {
     @apply font-sans;
     }
+}
+.page {
+  width: 100vw;
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  margin: auto;
+
+  .content {
+    width: 100%;
+    max-width: 1328px;
+    padding-top: 48;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+  }
 }
