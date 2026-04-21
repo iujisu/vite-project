@@ -1,4 +1,4 @@
-import { AppFooter, AppHeader } from "./components/common"
+import { AppFooter, AppHeader, AppSidebar } from "./components/common"
 import { ThemeProvider } from "./components/theme-provider";
 
 function App() {
@@ -6,11 +6,15 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="page">
           <AppHeader />
-            <div className="content"></div>
+            <div className="container">
+              <main className="w-full h-full min-h-[720px] flex p-8 gap-6">
+                <AppSidebar />
+                <section ></section>
+              </main>
+            </div>
           <AppFooter />
       </div>
     </ThemeProvider>
-
   );
 }
 
