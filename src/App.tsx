@@ -1,7 +1,6 @@
 import { AppFooter, AppHeader, AppSidebar } from "./components/common"
 import { SkeletonHotTopic, SkeletonNewTopic } from "./components/skeleton";
 import { ThemeProvider } from "./components/theme-provider";
-import { Skeleton } from "./components/ui";
 
 function App() {
   return (
