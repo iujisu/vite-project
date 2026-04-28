@@ -1,6 +1,8 @@
+import { PencilLine } from "lucide-react";
 import { AppFooter, AppHeader, AppSidebar } from "./components/common"
 import { SkeletonHotTopic, SkeletonNewTopic } from "./components/skeleton";
 import { ThemeProvider } from "./components/theme-provider";
+import { Button } from "./components/ui";
 
 function App() {
   return (
@@ -9,6 +11,11 @@ function App() {
           <AppHeader />
             <div className="container">
               <main className="w-full h-full min-h-[720px] flex p-8 gap-6">
+                <div className="fixed right-1/2 bottom-10 translate-x-1/2 z-20 items-center">
+                  <Button variant={"destructive"} className="!py-5 !px-6 rounded-full">
+                    <PencilLine/>나만의 토픽 작성
+                  </Button>
+                </div>
                 <AppSidebar />
                 <section className="flex-1">
                   <div className="w-full flex flex-col gap-12">
