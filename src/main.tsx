@@ -1,10 +1,26 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Route, Routes } from "react-router";
 import './index.css'
-import App from './App.tsx'
+import App from './pages/index.tsx'
+import SignIn from './pages/sign-in.tsx';
+import SignUp from './pages/sign-up.tsx';
+import RootLayout from './pages/layout.tsx';
+import { ThemeProvider } from './components/theme-provider.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <BrowserRouter>
+        <Routes>
+          <Route element={<RootLayout />} >
+            <Route index element={<App />} /> 
+            <Route path="sign-in" element={<SignIn />} />
+            <Route path="sign-up" element={<SignUp />} />
+          </Route> 
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
+
   </StrictMode>,
 )
