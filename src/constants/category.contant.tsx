@@ -32,3 +32,31 @@ export const CLASS_CATEGORY = [
     icon:<DraftingCompass/>
   }
 ]
+
+export const TOPIC_CATEGORY = [
+  {
+    id: 1,
+    label: "Category 1",
+    category: "Category 1",
+  },
+  {
+    id: 2,
+    label: "Category 2",
+    category: "Category 2",
+  },
+  {
+    id: 3,
+    label: "Category 3",
+    category: "Category 3",
+  },
+  {
+    id: 4,
+    label: "Category 4",
+    category: "Category 4",
+  },
+  {
+    id: 5 ,
+    label: "Category 5",
+    category: "Category 5",
+  }
+]

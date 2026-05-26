@@ -7,6 +7,7 @@ import SignIn from './pages/sign-in.tsx';
 import SignUp from './pages/sign-up.tsx';
 import RootLayout from './pages/layout.tsx';
 import { ThemeProvider } from './components/theme-provider.tsx';
+import CreateTopic from './pages/topics/create.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
             <Route index element={<App />} /> 
             <Route path="sign-in" element={<SignIn />} />
             <Route path="sign-up" element={<SignUp />} />
+            <Route path="create-topic" element={<CreateTopic />} />
           </Route> 
         </Routes>
       </BrowserRouter>

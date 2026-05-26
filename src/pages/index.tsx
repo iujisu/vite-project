@@ -2,12 +2,15 @@ import { PencilLine } from "lucide-react";
 import { AppSidebar } from "../components/common"
 import { SkeletonHotTopic, SkeletonNewTopic } from "../components/skeleton";
 import { Button } from "../components/ui";
+import { useNavigate } from "react-router";
 
 function App() {
+  const navigate=useNavigate();
+  
   return (
     <main className="w-full h-full min-h-[720px] flex p-8 gap-6">
       <div className="fixed right-1/2 bottom-10 translate-x-1/2 z-20 items-center">
-        <Button variant={"destructive"} className="!py-5 !px-6 rounded-full">
+        <Button variant={"destructive"} className="!py-5 !px-6 rounded-full" onClick={() =>navigate("/create-topic")}>
           <PencilLine/>나만의 토픽 작성
         </Button>
       </div>
